@@ -1,19 +1,32 @@
-#include<iostream>
+#include <iostream>
 using namespace std;
+
 int main() {
-    int i,n;
-    int *ptr;
-    cout << "enter no. of elements: " << endl;
-    cin >> n;
-    ptr = new int[n];
-    cout<<"Enter "<<n<<" elements:" << endl;
-    for(i=0; i<n; i++) 
-    {
-        cin >> ptr[i];
+    // Dynamically allocate memory for an integer
+    int *ptr = new int;
+    
+    // Check if memory allocation is successful
+    if (ptr == nullptr) {
+        cout << "Memory allocation failed!";
+        return 1;
     }
-    for(i=0; i<n; i++)
-    {
-        cout << ptr[i];
+    
+    // Store a value in the dynamically allocated memory
+    *ptr = 10;
+    
+    // Display the value
+    cout << "Dynamically allocated value: " << *ptr << endl;
+    
+    // Deallocate the dynamically allocated memory
+    delete ptr;
+    
+    // Check if deallocation is successful
+    if (ptr != nullptr) {
+        cout << "Memory deallocation failed!";
+        return 1;
     }
-    delete[] ptr;
+    
+    cout << "Memory deallocated successfully!";
+    
+    return 0;
 }
